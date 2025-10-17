@@ -26,7 +26,7 @@ public class CachingBreedFetcher implements BreedFetcher {
     }
 
     @Override
-    public List<String> getSubBreeds(String breed) throws BreedNotFoundException {
+    public List<String> getSubBreeds(String breed) throws BreedNotFoundException, IOException {
         // return statement included so that the starter code can compile and run.
 
         //If the breed exists in the cache, return the cached list directly.
@@ -41,12 +41,9 @@ public class CachingBreedFetcher implements BreedFetcher {
                 callsMade++;
                 return result;
 
-            } catch (BreedNotFoundException b) {
+            } catch (BreedNotFoundException | IOException e) {
                 callsMade++;
-                throw b;
-            }
-            catch(IOException e){
-                throw new RuntimeException(e);
+                throw e;
             }
         }
     }

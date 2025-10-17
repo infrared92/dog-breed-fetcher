@@ -49,18 +49,18 @@ public class DogApiBreedFetcher implements BreedFetcher {
                     for (int i = 0; i < breeds.length(); i++) {
                         subBreeds.add(breeds.getString(i));
                     }
-                    //System.out.println(subBreeds);
                     return subBreeds;
-                } else {
-                    throw new BreedNotFoundException(breed);
                 }
-            } catch (IOException e) {
-                throw new RuntimeException(e);
             }
+            catch (IOException e){
+
+
+            }
+            throw new BreedNotFoundException(breed);
         }
             public static void main(String[]args){
                 DogApiBreedFetcher fetcher = new DogApiBreedFetcher();
-                fetcher.getSubBreeds("hound");
+                //fetcher.getSubBreeds("hound");
             }
         }
 
